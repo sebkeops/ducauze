@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Ducauze – Pâtissier, Chocolatier, Glacier, Confiseur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --couleur-principale: #3a3434;
+    --couleur-secondaire: #f4efef;
+    --couleur-accent: #737373;
+    --fond-page: #f7f3ef;
+    --fond-bloc: #ffffff;
+    --fond-doux: #f3ede7;
+    --texte: #7f4c39;
+    --texte-secondaire: #6b625c;
+    --bordure: #e5dbd2;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--fond-page);
+    color: var(--couleur-principale);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(247,243,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--bordure);
+    transition: padding 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; letter-spacing: 0.06em;
+    color: var(--couleur-principale); text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--texte); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--texte-secondaire); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--texte); }
+  .nav-cta {
+    background: var(--couleur-principale); color: #fff;
+    padding: 10px 22px; border-radius: 2px;
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--texte); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--couleur-principale); display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=1800&q=80') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(110deg, rgba(58,52,52,0.78) 0%, rgba(58,52,52,0.35) 60%, transparent 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 40px; max-width: 680px;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(244,239,239,0.75); margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 1;
+    color: #fff; margin-bottom: 18px;
+  }
+  .hero-title em { font-style: italic; color: #e8d5c4; }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 300; font-style: italic;
+    color: rgba(244,239,239,0.85); margin-bottom: 12px; letter-spacing: 0.04em;
+  }
+  .hero-desc {
+    font-size: 0.9rem; color: rgba(244,239,239,0.7);
+    margin-bottom: 36px; line-height: 1.7; font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--texte); color: #fff;
+    padding: 14px 30px; border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #9a5e47; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(244,239,239,0.6); color: #fff;
+    padding: 14px 30px; border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-outline:hover { background: rgba(244,239,239,0.12); }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(244,239,239,0.5); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .hero-scroll::after {
+    content: ''; width: 1px; height: 40px;
+    background: rgba(244,239,239,0.4);
+    animation: scrollLine 1.4s ease-in-out infinite;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 90px 40px; }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--texte); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15;
+    color: var(--couleur-principale); margin-bottom: 14px;
+  }
+  .section-title em { font-style: italic; color: var(--texte); }
+  .section-sub {
+    font-size: 0.92rem; color: var(--texte-secondaire);
+    max-width: 520px; line-height: 1.75;
+  }
+  .section-header { margin-bottom: 52px; }
+
+  /* ── BANDE SAVOIR-FAIRE ── */
+  .savoir-faire {
+    background: var(--couleur-principale);
+    padding: 28px 40px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 48px; flex-wrap: wrap;
+  }
+  .sf-item {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(244,239,239,0.8); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .sf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--texte); flex-shrink: 0; }
+
+  /* ── UNIVERS PRODUITS ── */
+  #creations { background: var(--fond-page); }
+  .produits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .produit-card {
+    background: var(--fond-bloc);
+    border: 1px solid var(--bordure);
+    border-radius: 4px; overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .produit-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(58,52,52,0.12); }
+  .produit-img {
+    height: 220px; overflow: hidden; position: relative;
+  }
+  .produit-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .produit-card:hover .produit-img img { transform: scale(1.06); }
+  .produit-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--fond-bloc); color: var(--texte);
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 2px;
+  }
+  .produit-body { padding: 22px; }
+  .produit-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400; margin-bottom: 8px;
+  }
+  .produit-desc { font-size: 0.82rem; color: var(--texte-secondaire); line-height: 1.6; }
+  .produit-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--texte);
+  }
+  .produit-link::after { content: '→'; }
+
+  /* ── COMMANDE ── */
+  #commander { background: var(--fond-doux); }
+  .commande-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .etapes { display: flex; flex-direction: column; gap: 28px; margin-top: 36px; }
+  .etape { display: flex; gap: 20px; align-items: flex-start; }
+  .etape-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--bordure);
+    line-height: 1; min-width: 44px;
+  }
+  .etape-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400; margin-bottom: 4px; color: var(--couleur-principale);
+  }
+  .etape-content p { font-size: 0.82rem; color: var(--texte-secondaire); line-height: 1.6; }
+
+  /* Carte produit commande */
+  .cmd-card {
+    background: var(--fond-bloc);
+    border: 1px solid var(--bordure); border-radius: 4px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(58,52,52,0.08);
+  }
+  .cmd-img { height: 240px; overflow: hidden; }
+  .cmd-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cmd-body { padding: 28px; }
+  .cmd-tag {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--texte); background: var(--fond-doux);
+    padding: 4px 10px; border-radius: 2px; display: inline-block; margin-bottom: 12px;
+  }
+  .cmd-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; margin-bottom: 6px;
+  }
+  .cmd-price { font-size: 0.85rem; color: var(--texte-secondaire); margin-bottom: 20px; }
+  .cmd-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .cmd-label {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--texte-secondaire); margin-bottom: 8px; display: block;
+  }
+  .cmd-field {
+    width: 100%; border: 1px solid var(--bordure); border-radius: 2px;
+    padding: 10px 14px; font-family: 'Jost', sans-serif; font-size: 0.85rem;
+    background: var(--fond-page); color: var(--couleur-principale);
+    appearance: none; outline: none; transition: border-color 0.2s;
+  }
+  .cmd-field:focus { border-color: var(--texte); }
+  .cmd-group { flex: 1; min-width: 100px; }
+  .cmd-btn {
+    width: 100%; background: var(--couleur-principale); color: #fff;
+    border: none; border-radius: 2px; padding: 15px;
+    font-family: 'Jost', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 6px;
+  }
+  .cmd-btn:hover { background: var(--texte); transform: translateY(-1px); }
+  .cmd-note {
+    text-align: center; font-size: 0.72rem; color: var(--texte-secondaire);
+    margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .cmd-note::before { content: '🛍'; font-size: 0.9rem; }
+
+  /* Toast */
+  #toast {
+    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    background: var(--couleur-principale); color: #fff;
+    padding: 16px 24px; border-radius: 4px;
+    font-size: 0.82rem; letter-spacing: 0.04em;
+    transform: translateY(80px); opacity: 0;
+    transition: transform 0.4s, opacity 0.4s;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── AVIS ── */
+  #avis { background: var(--fond-bloc); }
+  .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .avis-card {
+    background: var(--fond-page); border: 1px solid var(--bordure);
+    border-radius: 4px; padding: 28px;
+    position: relative;
+  }
+  .avis-card::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 0.8;
+    color: var(--bordure); position: absolute; top: 22px; right: 24px;
+  }
+  .stars { color: #d4a853; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .avis-text {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.05rem; line-height: 1.7; color: var(--couleur-principale);
+    margin-bottom: 18px;
+  }
+  .avis-author { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texte-secondaire); }
+  .avis-source { font-size: 0.7rem; color: var(--texte); margin-top: 2px; }
+
+  /* ── INFOS PRATIQUES ── */
+  #infos { background: var(--fond-doux); }
+  .infos-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .horaires-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+  .horaires-table tr { border-bottom: 1px solid var(--bordure); }
+  .horaires-table td {
+    padding: 11px 0; font-size: 0.85rem;
+  }
+  .horaires-table td:first-child { color: var(--texte-secondaire); font-weight: 300; }
+  .horaires-table td:last-child { text-align: right; }
+  .ferme { color: var(--texte) !important; font-style: italic; }
+  .contact-block { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+  .contact-icon {
+    width: 36px; height: 36px; background: var(--fond-bloc); border: 1px solid var(--bordure);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; flex-shrink: 0;
+  }
+  .contact-detail span { display: block; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texte-secondaire); margin-bottom: 3px; }
+  .contact-detail strong { font-size: 0.88rem; font-weight: 400; }
+  .infos-btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn-dark {
+    background: var(--couleur-principale); color: #fff;
+    padding: 12px 24px; border-radius: 2px; text-decoration: none;
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .btn-dark:hover { background: var(--texte); }
+  .btn-light {
+    border: 1px solid var(--bordure); color: var(--couleur-principale);
+    padding: 12px 24px; border-radius: 2px; text-decoration: none;
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--fond-bloc); transition: border-color 0.2s;
+  }
+  .btn-light:hover { border-color: var(--texte); color: var(--texte); }
+
+  /* ── MAP PLACEHOLDER ── */
+  .map-placeholder {
+    background: var(--bordure); height: 280px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 10px; margin-top: 28px;
+    border: 1px solid var(--bordure);
+    background: linear-gradient(135deg, #e8ddd4 0%, #d9cfc6 100%);
+  }
+  .map-placeholder p { font-size: 0.78rem; color: var(--texte-secondaire); }
+  .map-placeholder strong { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--couleur-principale); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--couleur-principale); color: rgba(244,239,239,0.75);
+    padding: 50px 40px 30px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px; margin-bottom: 40px;
+    padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .nav-logo { color: #fff; }
+  .footer-brand p { font-size: 0.82rem; margin-top: 12px; line-height: 1.7; }
+  .footer-col h5 {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(244,239,239,0.5); margin-bottom: 16px;
+  }
+  .footer-col a, .footer-col p {
+    display: block; font-size: 0.84rem; line-height: 2; text-decoration: none;
+    color: rgba(244,239,239,0.75); transition: color 0.2s;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    font-size: 0.72rem; color: rgba(244,239,239,0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.5) translateY(-10px); }
+    50% { opacity: 1; transform: scaleY(1) translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 64px 20px; }
+    .hero-content { padding: 0 20px; }
+    .commande-wrap, .infos-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-top .footer-brand { grid-column: 1 / -1; }
+    .savoir-faire { gap: 24px; padding: 20px; }
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: clamp(2.6rem, 12vw, 3.8rem); }
+    .footer-top { grid-template-columns: 1fr; }
+    .produits-grid { grid-template-columns: 1fr; }
+    .avis-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Maison <span>Ducauze</span></a>
+  <ul class="nav-links">
+    <li><a href="#creations">Créations</a></li>
+    <li><a href="#commander">Commander</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#infos">Contact</a></li>
+  </ul>
+  <a href="#commander" class="nav-cta">Commander</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">L'Isle Jourdain · Gers</p>
+    <h1 class="hero-title">Maison<br><em>Ducauze</em></h1>
+    <p class="hero-sub">Pâtissier, chocolatier, glacier, confiseur</p>
+    <p class="hero-desc">Pâtisseries artisanales et créations gourmandes<br>à L'Isle Jourdain, depuis le cœur du Gers.</p>
+    <div class="hero-btns">
+      <a href="#creations" class="btn-primary">Voir les créations</a>
+      <a href="#commander" class="btn-outline">Commander</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Découvrir</div>
+</section>
+
+<!-- BANDE -->
+<div class="savoir-faire">
+  <div class="sf-item"><span class="sf-dot"></span>Pâtisserie artisanale</div>
+  <div class="sf-item"><span class="sf-dot"></span>Chocolaterie</div>
+  <div class="sf-item"><span class="sf-dot"></span>Macarons</div>
+  <div class="sf-item"><span class="sf-dot"></span>Glacerie</div>
+  <div class="sf-item"><span class="sf-dot"></span>Pièces montées</div>
+</div>
+
+<!-- UNIVERS PRODUITS -->
+<section id="creations">
+  <div class="section-header reveal">
+    <p class="section-label">Nos univers</p>
+    <h2 class="section-title">Des créations<br><em>faites avec passion</em></h2>
+    <p class="section-sub">Chaque pièce est confectionnée à la main dans notre laboratoire, avec des produits soigneusement sélectionnés.</p>
+  </div>
+  <div class="produits-grid">
+    <a href="#commander" class="produit-card reveal">
+      <div class="produit-img">
+        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600&q=80" alt="Pâtisserie" loading="lazy">
+        <span class="produit-badge">Pâtisserie</span>
+      </div>
+      <div class="produit-body">
+        <h3 class="produit-title">Pâtisseries</h3>
+        <p class="produit-desc">Entremets, tartes, choux et gourmandises du quotidien préparés chaque matin.</p>
+        <span class="produit-link">Explorer</span>
+      </div>
+    </a>
+    <a href="#commander" class="produit-card reveal">
+      <div class="produit-img">
+        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=600&q=80" alt="Chocolaterie" loading="lazy">
+        <span class="produit-badge">Chocolaterie</span>
+      </div>
+      <div class="produit-body">
+        <h3 class="produit-title">Chocolaterie</h3>
+        <p class="produit-desc">Ganaches, pralinés, tablettes et bonbons de chocolat artisanaux.</p>
+        <span class="produit-link">Explorer</span>
+      </div>
+    </a>
+    <a href="#commander" class="produit-card reveal">
+      <div class="produit-img">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="Macarons" loading="lazy">
+        <span class="produit-badge">Macarons</span>
+      </div>
+      <div class="produit-body">
+        <h3 class="produit-title">Macarons</h3>
+        <p class="produit-desc">Coques légères, garnitures généreuses — disponibles à l'unité ou en coffrets.</p>
+        <span class="produit-link">Explorer</span>
+      </div>
+    </a>
+    <a href="#commander" class="produit-card reveal">
+      <div class="produit-img">
+        <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&q=80" alt="Glaces" loading="lazy">
+        <span class="produit-badge">Glacerie</span>
+      </div>
+      <div class="produit-body">
+        <h3 class="produit-title">Glaces & Sorbets</h3>
+        <p class="produit-desc">Des parfums maison, des glaces à l'italienne et des sorbets fruités de saison.</p>
+        <span class="produit-link">Explorer</span>
+      </div>
+    </a>
+    <a href="#commander" class="produit-card reveal">
+      <div class="produit-img">
+        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" alt="Pièces montées" loading="lazy">
+        <span class="produit-badge">Sur commande</span>
+      </div>
+      <div class="produit-body">
+        <h3 class="produit-title">Pièces montées</h3>
+        <p class="produit-desc">Mariages, baptêmes, anniversaires — chaque événement mérite une pièce unique.</p>
+        <span class="produit-link">Explorer</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- COMMANDE CLICK & COLLECT -->
+<section id="commander">
+  <div class="commande-wrap">
+    <div>
+      <div class="section-header reveal">
+        <p class="section-label">Click & Collect</p>
+        <h2 class="section-title">Commander,<br><em>c'est simple</em></h2>
+        <p class="section-sub">Choisissez vos pâtisseries en ligne et récupérez-les à la boutique à la date souhaitée, sans attente.</p>
+      </div>
+      <div class="etapes">
+        <div class="etape reveal">
+          <span class="etape-num">01</span>
+          <div class="etape-content">
+            <h4>Choisissez une pâtisserie</h4>
+            <p>Parcourez nos créations et sélectionnez la gourmandise qui vous fait envie.</p>
+          </div>
+        </div>
+        <div class="etape reveal">
+          <span class="etape-num">02</span>
+          <div class="etape-content">
+            <h4>Sélectionnez le format</h4>
+            <p>Individuel ou pour plusieurs personnes, choisissez la taille adaptée.</p>
+          </div>
+        </div>
+        <div class="etape reveal">
+          <span class="etape-num">03</span>
+          <div class="etape-content">
+            <h4>Choisissez une date de retrait</h4>
+            <p>Indiquez quand vous souhaitez passer chercher votre commande en boutique.</p>
+          </div>
+        </div>
+        <div class="etape reveal">
+          <span class="etape-num">04</span>
+          <div class="etape-content">
+            <h4>Récupérez en boutique</h4>
+            <p>Votre commande vous attend, prête et fraîche, 8 place Saint-Bertrand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte produit commandable -->
+    <div class="cmd-card reveal">
+      <div class="cmd-img">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80" alt="Entremets chocolat noisette" loading="lazy">
+      </div>
+      <div class="cmd-body">
+        <span class="cmd-tag">Nouveauté</span>
+        <h3 class="cmd-title">Entremets chocolat noisette</h3>
+        <p class="cmd-price">Mousse chocolat noir, praliné feuilleté, biscuit noisette — à partir de 32 €</p>
+        <div class="cmd-row">
+          <div class="cmd-group">
+            <label class="cmd-label">Nombre de parts</label>
+            <select class="cmd-field">
+              <option>4 parts</option>
+              <option>6 parts</option>
+              <option>8 parts</option>
+              <option>10 parts</option>
+            </select>
+          </div>
+          <div class="cmd-group">
+            <label class="cmd-label">Date de retrait</label>
+            <input type="date" class="cmd-field" id="dateRetrait">
+          </div>
+        </div>
+        <button class="cmd-btn" onclick="addToOrder()">Ajouter à ma commande</button>
+        <p class="cmd-note">Retrait en boutique uniquement · 8 place Saint-Bertrand</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
+<section id="avis">
+  <div class="section-header reveal">
+    <p class="section-label">Avis clients</p>
+    <h2 class="section-title">Ce qu'ils<br><em>en disent</em></h2>
+  </div>
+  <div class="avis-grid">
+    <div class="avis-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="avis-text">Une pâtisserie d'exception. Les macarons sont absolument divins et la présentation est digne des grandes maisons parisiennes. Un incontournable de L'Isle Jourdain.</p>
+      <p class="avis-author">Marie-Claire T.</p>
+      <p class="avis-source">Avis Google · Il y a 2 semaines</p>
+    </div>
+    <div class="avis-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="avis-text">Nous avons commandé la pièce montée pour notre mariage ici. Le résultat était bluffant — magnifique visuellement et délicieux. Un grand merci à toute l'équipe !</p>
+      <p class="avis-author">Sophie & Julien</p>
+      <p class="avis-source">Avis Google · Il y a 1 mois</p>
+    </div>
+    <div class="avis-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="avis-text">Le meilleur chocolat chaud que j'ai jamais bu, servi avec de vrais copeaux de chocolat maison. L'entremets du week-end est toujours une petite merveille. Adresse incontournable.</p>
+      <p class="avis-author">Bertrand M.</p>
+      <p class="avis-source">Avis Google · Il y a 3 semaines</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFOS PRATIQUES -->
+<section id="infos">
+  <div class="infos-wrap">
+    <div>
+      <div class="section-header reveal">
+        <p class="section-label">Nous trouver</p>
+        <h2 class="section-title">Venez nous<br><em>rendre visite</em></h2>
+      </div>
+      <div class="contact-block reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <span>Adresse</span>
+            <strong>8 place Saint Bertrand<br>32600 L'Isle Jourdain</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">
+            <span>Téléphone</span>
+            <strong>05 62 59 01 93</strong>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-detail">
+            <span>Email</span>
+            <strong>maisonducauze@gmail.com</strong>
+          </div>
+        </div>
+      </div>
+      <div class="infos-btns reveal">
+        <a href="https://www.google.com/maps/search/8+place+Saint+Bertrand,+32600+L'Isle+Jourdain" target="_blank" class="btn-dark">📍 Itinéraire</a>
+        <a href="tel:0562590193" class="btn-light">📞 Appeler</a>
+      </div>
+      <div class="map-placeholder reveal">
+        <strong>8 place Saint-Bertrand</strong>
+        <p>32600 L'Isle Jourdain — Carte Google Maps</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-header reveal">
+        <p class="section-label">Horaires d'ouverture</p>
+        <h2 class="section-title">Quand<br><em>nous rendre visite</em></h2>
+      </div>
+      <table class="horaires-table reveal">
+        <tr>
+          <td>Lundi</td>
+          <td class="ferme">Fermé</td>
+        </tr>
+        <tr>
+          <td>Mardi</td>
+          <td class="ferme">Fermé</td>
+        </tr>
+        <tr>
+          <td>Mercredi</td>
+          <td>8h00 – 13h00 · 14h30 – 19h30</td>
+        </tr>
+        <tr>
+          <td>Jeudi</td>
+          <td>8h00 – 13h00 · 14h30 – 19h30</td>
+        </tr>
+        <tr>
+          <td>Vendredi</td>
+          <td>8h00 – 13h00 · 14h30 – 19h30</td>
+        </tr>
+        <tr>
+          <td>Samedi</td>
+          <td>8h00 – 13h00 · 14h30 – 19h30</td>
+        </tr>
+        <tr>
+          <td>Dimanche</td>
+          <td>8h00 – 12h30</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Maison <span>Ducauze</span></a>
+      <p>Pâtissier, chocolatier, glacier et confiseur artisanal<br>au cœur de L'Isle Jourdain dans le Gers.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Nos univers</h5>
+      <a href="#creations">Pâtisserie</a>
+      <a href="#creations">Chocolaterie</a>
+      <a href="#creations">Macarons</a>
+      <a href="#creations">Glaces</a>
+      <a href="#creations">Pièces montées</a>
+    </div>
+    <div class="footer-col">
+      <h5>Informations</h5>
+      <a href="#commander">Commander en ligne</a>
+      <a href="#infos">Nous trouver</a>
+      <a href="#avis">Avis clients</a>
+      <p style="margin-top:4px">05 62 59 01 93</p>
+      <p>maisonducauze@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Maison Ducauze · L'Isle Jourdain</span>
+    <span>Maquette de démonstration</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">✓ Commande ajoutée — À bientôt en boutique !</div>
+
+<script>
+  // Date minimum = demain
+  const dateInput = document.getElementById('dateRetrait');
+  if (dateInput) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    dateInput.min = tomorrow.toISOString().split('T')[0];
+    dateInput.value = tomorrow.toISOString().split('T')[0];
+  }
+
+  function addToOrder() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+    } else {
+      links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(247,243,239,0.97);padding:24px 20px;gap:20px;border-bottom:1px solid var(--bordure);z-index:99;';
+    }
+  }
+</script>
+</body>
+</html>
