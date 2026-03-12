@@ -35,8 +35,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .hamburger span { width: 22px; height: 1.5px; background: var(--couleur-principale); display: block; }
 
 /* HERO */
-.hero { min-height: 72vh; position: relative; display: flex; align-items: flex-end; padding-bottom: 56px; overflow: hidden; padding-top: 62px; }
-.hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=1800&q=80') center/cover no-repeat; }
+.hero { min-height: 57vh; position: relative; display: flex; align-items: flex-end; padding-bottom: 56px; overflow: hidden; padding-top: 62px; }
+.hero-bg { position: absolute; inset: 0; background: url('images/hero2.png') center/cover no-repeat; }
 .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(58,52,52,0.84) 0%, rgba(58,52,52,0.48) 55%, rgba(58,52,52,0.2) 100%); }
 .hero-inner { position: relative; z-index: 2; width: 100%; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 40px; gap: 32px; flex-wrap: wrap; }
 .hero-left { max-width: 540px; animation: fadeUp 0.9s ease both; }
@@ -299,7 +299,7 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
   <div class="produits-grid">
     <a href="#commander" class="produit-card wide reveal" id="patisseries-buches">
       <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=900&q=80" alt="Pâtisserie" loading="lazy">
+        <img src="images/photo1.png" alt="Pâtisserie" loading="lazy" style="object-position: center 82%;">
         <span class="produit-badge">Pâtisserie</span>
       </div>
       <div class="produit-body">
@@ -310,7 +310,7 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
     </a>
     <a href="#commander" class="produit-card reveal" id="chocolaterie">
       <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=600&q=80" alt="Chocolaterie" loading="lazy">
+        <img src="images/photo2.png" alt="Chocolaterie" loading="lazy">
         <span class="produit-badge">Chocolaterie</span>
       </div>
       <div class="produit-body">
@@ -319,20 +319,9 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
         <span class="produit-link">Commander</span>
       </div>
     </a>
-    <a href="#commander" class="produit-card reveal" id="macarons">
-      <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="Macarons" loading="lazy">
-        <span class="produit-badge">Macarons</span>
-      </div>
-      <div class="produit-body">
-        <h3 class="produit-title">Macarons</h3>
-        <p class="produit-desc">Coques légères et garnitures généreuses, à l'unité ou en coffret.</p>
-        <span class="produit-link">Commander</span>
-      </div>
-    </a>
     <a href="#commander" class="produit-card reveal" id="glacerie">
       <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&q=80" alt="Glaces" loading="lazy">
+        <img src="images/photo3.jpg" alt="Glaces" loading="lazy">
         <span class="produit-badge">Glacerie</span>
       </div>
       <div class="produit-body">
@@ -343,7 +332,7 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
     </a>
     <a href="#commander" class="produit-card reveal" id="grignotages">
       <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=600&q=80" alt="Grignotages" loading="lazy">
+        <img src="images/photo5.png" alt="Grignotages" loading="lazy" style="object-position: center 62%;">
         <span class="produit-badge">Grignotages</span>
       </div>
       <div class="produit-body">
@@ -354,7 +343,7 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
     </a>
     <a href="#commander" class="produit-card reveal" id="pieces-montees">
       <div class="produit-img">
-        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" alt="Pièces montées" loading="lazy">
+        <img src="images/photo4.jpg" alt="Pièces montées" loading="lazy" style="object-position: center 99%;">
         <span class="produit-badge">Sur commande</span>
       </div>
       <div class="produit-body">
@@ -385,12 +374,12 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
 
     <div class="cmd-card reveal">
       <div class="cmd-img">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80" alt="Entremets chocolat noisette" loading="lazy">
+        <img src="images/photo6.jpg" alt="Entremets chocolat noisette" loading="lazy" style="object-position: center 80%;">
       </div>
       <div class="cmd-body">
         <span class="cmd-tag">⭐ Création de la maison</span>
-        <h3 class="cmd-title">Entremets chocolat noisette</h3>
-        <p class="cmd-desc">Mousse chocolat noir, praliné feuilleté, biscuit noisette. Création de Frédéric Ducauze. À partir de 32 €.</p>
+        <h3 class="cmd-title">LA FLEUR D'AUTOMNE</h3>
+        <p class="cmd-desc">Cheese cake à la vanille et à la mûre sur un biscuit sablé reconstitué et son moelleux citron, de la fraicheur, de la nouveauté pour agrémenter vos repas de fêtes !</p>
 
         <div class="cmd-divider"></div>
         <span class="cmd-section-label">🎂 Votre commande</span>
@@ -458,21 +447,21 @@ footer { background: var(--couleur-principale); color: rgba(244,239,239,0.68); p
   <div class="avis-grid">
     <div class="avis-card reveal">
       <div class="stars">★★★★★</div>
-      <p class="avis-text">Une pâtisserie d'exception. Les macarons sont absolument divins, la présentation est digne des grandes maisons. Un incontournable de L'Isle Jourdain.</p>
-      <p class="avis-author">Marie-Claire T.</p>
-      <p class="avis-date">Avis Google · Il y a 2 semaines</p>
+      <p class="avis-text">De passage sur l'isle jourdain j'ai goûté leur patisserie elles sont exceptionnelles et ils sont très aimables.</p>
+      <p class="avis-author">Patricia Gaiardo</p>
+      <p class="avis-date">Avis Google · Décembre 2025</p>
     </div>
     <div class="avis-card reveal">
       <div class="stars">★★★★★</div>
-      <p class="avis-text">La bûche de Noël commandée ici était une vraie merveille. Frédéric a un talent exceptionnel. On recommande chaleureusement cette adresse à tous les amoureux de bonne pâtisserie.</p>
-      <p class="avis-author">Bertrand M.</p>
-      <p class="avis-date">Avis Google · Il y a 3 semaines</p>
+      <p class="avis-text">La meilleure pâtisserie de l'isle jourdain. Tout est excellent ! Et le personnel toujours très accueillant, aimable et à l'écoute. Je recommande sans hésitation. 😊</p>
+      <p class="avis-author">Mathieu Jeanvoine</p>
+      <p class="avis-date">Avis Google · Octobre 2025</p>
     </div>
     <div class="avis-card reveal">
       <div class="stars">★★★★★</div>
-      <p class="avis-text">Nous avons commandé la pièce montée pour notre mariage. Le résultat était bluffant — magnifique et délicieux. Un grand merci à Frédéric et Sylvie pour leur accompagnement !</p>
-      <p class="avis-author">Sophie &amp; Julien M.</p>
-      <p class="avis-date">Avis Google · Il y a 1 mois</p>
+      <p class="avis-text">Un véritable pâtissier passionné. Excellents produits, montage précis et impeccable. Du bon chocolat, tout le monde a apprécié. Tous les produits sont maîtrisés et équilibrés, l’équipe est très qualifiée ça se voit.</p>
+      <p class="avis-author">Sylvain Mémain</p>
+      <p class="avis-date">Avis Google · Il y a 2 ans</p>
     </div>
   </div>
 </section>
